@@ -17,6 +17,11 @@
 # Imports python modules
 import argparse
 
+# importing Path function from pathlib to use to dynamically add the full path to this directory as to have it work on local machine
+from pathlib import Path
+
+main_dir = str(Path(__file__).parent.absolute())
+
 # TODO 1: Define get_input_args function below please be certain to replace None
 #       in the return statement with parser.parse_args() parsed argument 
 #       collection that you created with this function
@@ -39,9 +44,9 @@ def get_input_args():
      parse_args() -data structure that stores the command line arguments object  
     """
     parser = argparse.ArgumentParser()
-    parser.add_argument('--dir', type = str, default = 'pet_images/', help = 'path to the folder of pet images')
+    parser.add_argument('--dir', type = str, default = main_dir + '/pet_images/', help = 'path to the folder of pet images')
     parser.add_argument('--arch', type = str, default = 'vgg', help = 'name of CNN model to use')
-    parser.add_argument('--dogfile', type = str, default = 'dognames.txt', help = 'path to the text file with dog names')  
+    parser.add_argument('--dogfile', type = str, default = main_dir + '/dognames.txt', help = 'path to the text file with dog names')  
     # Replace None with parser.parse_args() parsed argument collection that 
     # you created with this function 
     return parser.parse_args()
