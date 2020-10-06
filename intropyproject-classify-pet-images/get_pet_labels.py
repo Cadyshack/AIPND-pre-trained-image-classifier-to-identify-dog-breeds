@@ -49,7 +49,7 @@ def get_pet_labels(image_dir):
         if filenames[idx] not in results_dic:
             filename = filenames[idx]
             label_lower = filename.lower()
-            lable_split_list = label_lower.split("_")
+            label_split_list = label_lower.split("_")
             animal_name = ""
             for word in label_split_list:
                 if word.isalpha():
