@@ -67,4 +67,23 @@ def adjust_results4_isadog(results_dic, dogfile):
     Returns:
            None - results_dic is mutable data type so no return needed.
     """           
-    None
+    dognames_dic = dict()
+
+    with open(dogfile) as f:
+        for line in f:
+            dogname = line.rstrip('\n')
+            if dogname not in dognames_dic:
+                dognames_dic[dogname] = 1
+            else:
+                print("** Warning: Duplicate dog names exist in dogname file")
+    
+    for key in results_dic:
+        pet_label_is_dog = 0
+        classifier_label_is_dog = 0
+        if results_dic[key][0] in dognames_dic:
+            pet_label_is_dog = 1
+        if results_dic[key][1] in dognames_dic:
+            classifier_label_is_dog = 1
+        
+        results_dic[key].extend([pet_label_is_dog, classifier_label_is_dog])
+
