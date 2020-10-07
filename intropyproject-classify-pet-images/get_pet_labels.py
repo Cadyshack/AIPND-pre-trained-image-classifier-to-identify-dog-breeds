@@ -47,8 +47,8 @@ def get_pet_labels(image_dir):
     
     for idx in range(0, len(filenames), 1):
         # Skips file if starts with . (like .DS_Store of Mac OSX) because it 
-       # isn't an pet image file
-       if filenames[idx][0] != ".":
+        # isn't an pet image file
+        if filenames[idx][0] != ".":
             if filenames[idx] not in results_dic:
                 filename = filenames[idx]
                 label_lower = filename.lower()
